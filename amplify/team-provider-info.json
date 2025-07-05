@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-securefileshare-dev-19393-authRole",
+      "UnauthRoleArn": "arn:aws:iam::757672176225:role/amplify-securefileshare-dev-19393-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::757672176225:role/amplify-securefileshare-dev-19393-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-securefileshare-dev-19393-deployment",
+      "UnauthRoleName": "amplify-securefileshare-dev-19393-unauthRole",
+      "StackName": "amplify-securefileshare-dev-19393",
+      "StackId": "arn:aws:cloudformation:ap-south-1:757672176225:stack/amplify-securefileshare-dev-19393/73c9de80-59a9-11f0-882f-0ae8ef93e5ef",
+      "AmplifyAppId": "d262cdpdezjs8w"
+    }
+  }
+}
