@@ -50,22 +50,39 @@ const DownloadFile = () => {
     }
 
     try {
+      // First get the signed URL with forced download headers
       const signedURL = await getUrl({
         key: fileMeta.fileKey,
         options: { 
           expiresIn: 300,
-          download: true // Force download instead of preview
+          download: true,
+          // Explicitly set content disposition
+          responseContentDisposition: `attachment; filename="${encodeURIComponent(fileMeta.filename)}"`
         }
       });
 
-      // Create hidden anchor tag to trigger download
-      const a = document.createElement('a');
-      a.href = signedURL.url;
-      a.download = fileMeta.filename || 'download';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      // Create a hidden iframe to handle the download
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = signedURL.url;
+      document.body.appendChild(iframe);
       
+      // Fallback method for stubborn browsers
+      setTimeout(() => {
+        const a = document.createElement('a');
+        a.href = signedURL.url;
+        a.download = fileMeta.filename || 'download';
+        a.target = '_blank';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }, 1000);
+      
+      // Cleanup iframe after some time
+      setTimeout(() => {
+        document.body.removeChild(iframe);
+      }, 5000);
+
       setStatus('success');
     } catch (err) {
       console.error('Download failed:', err);
