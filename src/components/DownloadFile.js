@@ -52,10 +52,20 @@ const DownloadFile = () => {
     try {
       const signedURL = await getUrl({
         key: fileMeta.fileKey,
-        options: { expiresIn: 300 }
+        options: { 
+          expiresIn: 300,
+          download: true // Force download instead of preview
+        }
       });
 
-      window.open(signedURL.url, '_blank');
+      // Create hidden anchor tag to trigger download
+      const a = document.createElement('a');
+      a.href = signedURL.url;
+      a.download = fileMeta.filename || 'download';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      
       setStatus('success');
     } catch (err) {
       console.error('Download failed:', err);
