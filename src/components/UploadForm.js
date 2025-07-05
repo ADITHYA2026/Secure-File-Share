@@ -8,7 +8,7 @@ const UploadForm = ({ setLink, setIsUploading }) => {
   const [file, setFile] = useState(null);
   const [expiry, setExpiry] = useState(10); // minutes
   const [password, setPassword] = useState('');
-  const client = generateClient();
+  //const client = generateClient();
 
   const handleUpload = async () => {
     if (!file) return alert('Please select a file');
