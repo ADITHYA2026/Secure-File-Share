@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { generateClient } from 'aws-amplify/api';
-import { getUrl } from 'aws-amplify/storage';
-import { getFileMeta } from '../graphql/queries';
+//import { generateClient } from 'aws-amplify/api';
+//import { getUrl } from 'aws-amplify/storage';
+//import { getFileMeta } from '../graphql/queries';
 import { useParams } from 'react-router-dom';
 
 const DownloadFile = () => {
@@ -9,11 +9,11 @@ const DownloadFile = () => {
   const [enteredPassword, setEnteredPassword] = useState('');
   const [status, setStatus] = useState('');
   const [filename, setFilename] = useState('');
-  const client = generateClient();
+  //const client = generateClient();
 
   const handleDownload = async () => {
     try {
-      const res = await client.graphql({
+      /*const res = await client.graphql({
         query: getFileMeta,
         variables: { id }
       });
@@ -41,7 +41,7 @@ const DownloadFile = () => {
       
       setFilename(fileData.filename);
       window.open(signedURL.url, "_blank");
-      setStatus('success');
+      setStatus('success');*/
     } catch (err) {
       console.error('Download failed:', err);
       setStatus('error');
