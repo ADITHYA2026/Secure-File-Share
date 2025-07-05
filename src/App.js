@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React, { useState } from 'react';
 import './App.css';
 import UploadForm from './components/UploadForm';
@@ -10,7 +10,7 @@ function App() {
   const [isUploading, setIsUploading] = useState(false);
 
   return (
-    <Router>
+    <Router basename="/">
       <div className="app-container">
         <div className="header">
           <h1>🔐 Secure File Share</h1>
