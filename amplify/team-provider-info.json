@@ -1,15 +1,15 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-securefileshare-dev-19393-authRole",
-      "UnauthRoleArn": "arn:aws:iam::757672176225:role/amplify-securefileshare-dev-19393-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::757672176225:role/amplify-securefileshare-dev-19393-authRole",
+      "AuthRoleName": "amplify-securefileshare-dev-a47ea-authRole",
+      "UnauthRoleArn": "arn:aws:iam::757672176225:role/amplify-securefileshare-dev-a47ea-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::757672176225:role/amplify-securefileshare-dev-a47ea-authRole",
       "Region": "ap-south-1",
-      "DeploymentBucketName": "amplify-securefileshare-dev-19393-deployment",
-      "UnauthRoleName": "amplify-securefileshare-dev-19393-unauthRole",
-      "StackName": "amplify-securefileshare-dev-19393",
-      "StackId": "arn:aws:cloudformation:ap-south-1:757672176225:stack/amplify-securefileshare-dev-19393/73c9de80-59a9-11f0-882f-0ae8ef93e5ef",
-      "AmplifyAppId": "d262cdpdezjs8w"
+      "DeploymentBucketName": "amplify-securefileshare-dev-a47ea-deployment",
+      "UnauthRoleName": "amplify-securefileshare-dev-a47ea-unauthRole",
+      "StackName": "amplify-securefileshare-dev-a47ea",
+      "StackId": "arn:aws:cloudformation:ap-south-1:757672176225:stack/amplify-securefileshare-dev-a47ea/7b34c490-59af-11f0-94ee-06f7eee095b7",
+      "AmplifyAppId": "d3hk3ziql3cc87"
     }
   }
 }
