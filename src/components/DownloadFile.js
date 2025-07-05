@@ -50,38 +50,23 @@ const DownloadFile = () => {
     }
 
     try {
-      // First get the signed URL with forced download headers
+      // Get signed URL
       const signedURL = await getUrl({
         key: fileMeta.fileKey,
-        options: { 
-          expiresIn: 300,
-          download: true,
-          // Explicitly set content disposition
-          responseContentDisposition: `attachment; filename="${encodeURIComponent(fileMeta.filename)}"`
-        }
+        options: { expiresIn: 300 }
       });
 
-      // Create a hidden iframe to handle the download
-      const iframe = document.createElement('iframe');
-      iframe.style.display = 'none';
-      iframe.src = signedURL.url;
-      document.body.appendChild(iframe);
-      
-      // Fallback method for stubborn browsers
-      setTimeout(() => {
-        const a = document.createElement('a');
-        a.href = signedURL.url;
-        a.download = fileMeta.filename || 'download';
-        a.target = '_blank';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      }, 1000);
-      
-      // Cleanup iframe after some time
-      setTimeout(() => {
-        document.body.removeChild(iframe);
-      }, 5000);
+      // Fetch the file as a blob
+      const response = await fetch(signedURL.url);
+      const blob = await response.blob();
+
+      // Create temporary download link
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = fileMeta.filename || 'download';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
 
       setStatus('success');
     } catch (err) {
@@ -109,8 +94,14 @@ const DownloadFile = () => {
       )}
       <button onClick={handleDownload}>Download</button>
 
-      {status === 'wrong_password' && <p style={{ color: 'red' }}>❌ Wrong password</p>}
-      {status === 'success' && <p style={{ color: 'green' }}>✅ Download started: {fileMeta.filename}</p>}
+      {status === 'wrong_password' && (
+        <p style={{ color: 'red' }}>❌ Wrong password</p>
+      )}
+      {status === 'success' && (
+        <p style={{ color: 'green' }}>
+          ✅ Download started: {fileMeta.filename}
+        </p>
+      )}
     </div>
   );
 };
