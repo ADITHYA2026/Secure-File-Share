@@ -17,6 +17,9 @@
       },
       "storage": {
         "securefilestorage": {}
+      },
+      "api": {
+        "securefileshare": {}
       }
     }
   }

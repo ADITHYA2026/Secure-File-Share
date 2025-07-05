@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-//import { generateClient } from 'aws-amplify/api';
-//import { uploadData } from 'aws-amplify/storage';
-//import { createFileMeta } from '../graphql/mutations';
+import { generateClient } from 'aws-amplify/api';
+import { uploadData } from 'aws-amplify/storage';
+import { createFileMeta } from '../graphql/mutations';
 import { v4 as uuidv4 } from 'uuid';
 
 const UploadForm = ({ setLink, setIsUploading }) => {
   const [file, setFile] = useState(null);
   const [expiry, setExpiry] = useState(10); // minutes
   const [password, setPassword] = useState('');
-  //const client = generateClient();
+  const client = generateClient();
 
   const handleUpload = async () => {
     if (!file) return alert('Please select a file');
@@ -22,7 +22,7 @@ const UploadForm = ({ setLink, setIsUploading }) => {
       setIsUploading(true);
 
       // Upload file to S3
-      /*await uploadData({
+      await uploadData({
         key: `${id}/${filename}`,
         data: file,
         options: {
@@ -42,7 +42,7 @@ const UploadForm = ({ setLink, setIsUploading }) => {
             password
           }
         }
-      });*/
+      });
 
       setLink(`${window.location.origin}/download/${id}`);
     } catch (err) {
