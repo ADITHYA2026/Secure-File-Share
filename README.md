@@ -1,70 +1,150 @@
-# Secure-File-Share
+# 🔐 Secure File Sharing App (React + AWS Amplify)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A secure, full-stack file-sharing web app built with **React**, powered entirely by **AWS free-tier services** using **Amplify, S3, DynamoDB, and AppSync**.
 
-## Available Scripts
+> ✔️ Upload files  
+> ✔️ Set expiration time  
+> ✔️ (Optional) Add password protection  
+> ✔️ Share auto-expiring secure download link
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📸 Demo
 
-Runs the app in the development mode.  
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🌐 **Live URL:**  
+`https://main.<your-subdomain>.amplifyapp.com`
 
-The page will reload when you make changes.  
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🚀 Features
 
-Launches the test runner in the interactive watch mode.  
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- ✅ Upload any file securely to AWS S3  
+- 🔐 Optional password protection  
+- ⏱ Expiry system (10 mins → 7 days)  
+- 🔗 Shareable link: auto-expired if time passes  
+- 🌐 Fully deployed using **Amplify Console**  
+- ☁️ No Lambda / API Gateway used (simplified architecture)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.  
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🛠 Tech Stack
 
-The build is minified and the filenames include the hashes.  
-Your app is ready to be deployed!
+| Frontend       | Backend (Serverless)  | AWS Services Used              | DevOps Tools        |
+|----------------|------------------------|--------------------------------|----------------------|
+| React (CRA)    | GraphQL via AppSync    | ✅ S3 (file storage)           | ✅ GitHub            |
+| HTML, CSS      | DynamoDB (metadata DB) | ✅ DynamoDB (file metadata)    | ✅ Amplify CI/CD     |
+| Amplify UI     | Amplify Storage & API  | ✅ AppSync (GraphQL endpoint)  |                      |
+| React Router   |                        | ✅ Amplify Hosting & Console   |                      |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## ⚙️ Project Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+secure-file-share/
+├── amplify/                # Backend infra (S3, API, etc.)
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── UploadForm.js
+│   │   ├── DownloadPage.js
+│   │   └── LinkResult.js
+│   ├── graphql/            # Auto-generated schema, queries
+│   ├── App.js
+│   ├── index.js
+│   └── aws-exports.js
+├── .gitignore
+├── package.json
+├── README.md
+└── amplify.yml            # Build settings (auto)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc.) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+````
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However, we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🔄 How It Works
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **User uploads file** via React UI  
+2. File is saved to AWS **S3** with a unique key  
+3. File metadata (ID, expiry, optional password) is saved to **DynamoDB**  
+4. User gets a **unique shareable link** (e.g. `/download/xyz123`)  
+5. Anyone with the link can download the file until it expires  
+6. If expired or password is incorrect → error shown
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 📦 Installation (Dev Mode)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+git clone https://github.com/your-username/secure-file-share.git
+cd secure-file-share
+npm install
+amplify pull --appId YOUR_APP_ID
+npm start
+````
 
-### Analyzing the Bundle Size
+> 🔧 You'll need to [install Amplify CLI](https://docs.amplify.aws/cli/start/) and configure using `amplify configure`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🚢 Deployment (One-Time Setup)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### ✅ 1. Push Frontend + Backend
 
-### Advanced Configuration
+```bash
+amplify push
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### ✅ 2. Publish Live Site
 
-### Deployment
+```bash
+amplify publish
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Auto-deploy will also occur on GitHub push via Amplify Console CI/CD.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🔐 Security
+
+* Files are **NOT public**
+* Downloads require:
+  ✅ Expiry check
+  ✅ Password match (if set)
+* All access via **pre-signed S3 URLs**
+* Protected using Cognito Auth Roles (IAM)
+
+---
+
+## 📅 Expiry Options
+
+| Option     | Value   |
+| ---------- | ------- |
+| 10 Minutes | `10`    |
+| 30 Minutes | `30`    |
+| 1 Hour     | `60`    |
+| 1 Day      | `1440`  |
+| 1 Week     | `10080` |
+
+---
+
+## 📖 Application Outcomes
+
+✅ Hands-on with:
+
+* AWS Amplify (hosting, API, storage)
+* GraphQL + AppSync
+* Cognito IAM roles
+* React file handling
+* CI/CD with GitHub → Amplify
+
+---
+
+## 🤝 Acknowledgements
+
+* Built using AWS Free Tier services
+* Designed by **Adithya Prathi**, 4th Year CSE
+* Made for hands-on DevOps + React application
+
+---
