@@ -1,0 +1,25 @@
+.link-result {
+  margin-top: 20px;
+}
+
+.link-result input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.link-result button {
+  background-color: #34c759;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.link-result button:hover {
+  background-color: #28a745;
+}

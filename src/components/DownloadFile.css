@@ -1,0 +1,44 @@
+.password-prompt {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+  background: white;
+}
+
+.password-prompt.error {
+  color: #ff4757;
+}
+
+.password-prompt input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.password-prompt button {
+  background: #6a11cb;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.download-container {
+  text-align: center;
+}
+
+.download-btn {
+  display: inline-block;
+  background: #34c759;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 20px;
+}
