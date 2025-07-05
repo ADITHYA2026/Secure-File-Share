@@ -10,6 +10,14 @@
       "StackName": "amplify-securefileshare-dev-a47ea",
       "StackId": "arn:aws:cloudformation:ap-south-1:757672176225:stack/amplify-securefileshare-dev-a47ea/7b34c490-59af-11f0-94ee-06f7eee095b7",
       "AmplifyAppId": "d3hk3ziql3cc87"
+    },
+    "categories": {
+      "auth": {
+        "securefilesharefb45605c": {}
+      },
+      "storage": {
+        "securefilestorage": {}
+      }
     }
   }
 }
