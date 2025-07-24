@@ -19,7 +19,7 @@ A secure, full-stack file-sharing web app built with **React**, powered entirely
 
 - ✅ Upload any file securely to AWS S3  
 - 🔐 Optional password protection  
-- ⏱ Expiry system (10 mins → 7 days)  
+- ⏱ Expiry system  
 - 🔗 Shareable link: auto-expired if time passes  
 - 🌐 Fully deployed using **Amplify Console**  
 - ☁️ No Lambda / API Gateway used (simplified architecture)
