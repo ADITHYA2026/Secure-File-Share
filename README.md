@@ -11,8 +11,7 @@ A secure, full-stack file-sharing web app built with **React**, powered entirely
 
 ## 📸 Demo
 
-🌐 **Live URL:**  
-`https://main.<your-subdomain>.amplifyapp.com`
+🌐 [**Live URL** →](https://main.dtx18klq7o12j.amplifyapp.com/)  
 
 ---
 
