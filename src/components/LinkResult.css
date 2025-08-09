@@ -1,0 +1,59 @@
+.link-result {
+  margin-top: 30px;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #6c5ce7;
+}
+
+.link-result h3 {
+  color: #2d3436;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.link-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.link-input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #dfe6e9;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: white;
+  color: #636e72;
+}
+
+.link-input:focus {
+  border-color: #6c5ce7;
+}
+
+.copy-button {
+  background: linear-gradient(90deg, #6c5ce7 0%, #a55eea 100%);
+  color: white;
+  border: none;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  min-width: 100px;
+}
+
+.link-note {
+  color: #636e72;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+@media (max-width: 480px) {
+  .link-container {
+    flex-direction: column;
+  }
+  
+  .copy-button {
+    padding: 12px;
+  }
+}
