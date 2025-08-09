@@ -11,7 +11,7 @@ A secure, full-stack file-sharing web app built with **React**, powered entirely
 
 ## 📸 Demo
 
-🌐 [**Live URL**](https://main.dtx18klq7o12j.amplifyapp.com/)  
+🌐 [**Live URL**](https://secure-file-share-alpha.vercel.app/)  
 
 ---
 
